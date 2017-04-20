@@ -1,0 +1,36 @@
+!!!
+%html{:lang => :en}
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title TradeGecko
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .navbar.navbar-inverse
+      .navbar-inner
+        .container-fluid
+          = link_to "TradeGecko App", object_states_path, :class => "navbar-brand"
+          - if user_signed_in?
+            %ul.nav.nav-pills.pull-right
+              %li.dropdown
+                %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
+                  = current_user.username
+                  %b.caret
+                  %li= link_to 'Logout', destroy_user_session_path, :method => 'delete'
+                %ul.dropdown-menu
+                  %li= link_to 'Edit Profile', "#"
+                  %li= link_to 'Change Password', "#"
+                  %li= link_to 'Logout', destroy_user_session_path, :method => 'delete'
+    - if user_signed_in?
+      .container-fluid
+        .row-fluid
+          .span12
+            = render 'shared/messages'
+            = yield
+    - else
+      .container
+        .form-signin
+          = render 'shared/messages'
+          = yield

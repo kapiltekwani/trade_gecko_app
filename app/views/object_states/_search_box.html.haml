@@ -1,0 +1,22 @@
+#mySearchModal.modal.fade{:role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      = form_tag search_object_states_path , :class => "form-horizontal" do
+        .modal-header
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} ×
+          %h4.modal-title Search the object state
+        .modal-body
+          .field
+            = label_tag :object_id, "Object ID    "
+            = text_field_tag :object_id
+            %br
+            = label_tag :object_type, "Object Type"
+            = text_field_tag :object_type
+            %br
+            = label_tag :timestamp, "Timestamp  "
+            = text_field_tag :timestamp
+            
+        .modal-footer
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+          = submit_tag "Search", :class => 'btn btn-primary'

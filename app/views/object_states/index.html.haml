@@ -1,0 +1,31 @@
+.row-fluid{:style => 'padding-bottom:5px'}
+  %h4
+    List Of Object States
+    = link_to "Upload CSV", "#myModal", :class => "btn btn-success", :style => 'float:right', :"data-toggle" => "modal"
+    = link_to "Search Object State", "#mySearchModal", :class => "btn btn-info", :style => 'float:right; margin-right:10px', :"data-toggle" => "modal"
+%br 
+.row-fluid
+  %table.table.table-striped.table-condensed.table-bordered#guest
+    %thead
+      %th.span2
+        ID
+      %th.span2
+        Type
+      %th.span4
+        TimeStamp
+      %th.span8
+        Changes
+      %th
+        Actions 
+    %tbody
+      = render :partial => 'object_state', :collection => @object_states
+= render :partial => "reports/file_upload"
+= render :partial => "search_box"
+
+:javascript
+  $('#guest').dataTable({
+  "sPaginationType": "full_numbers",
+  "aLengthMenu": [10,20,50],
+  "iDisplayLength": 50
+  });
+

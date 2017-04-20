@@ -1,0 +1,15 @@
+#myModal.modal.fade{:role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      = simple_form_for @report, :html => {:class => "form-horizontal", :multipart => true} do |f|
+        .modal-header
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} ×
+          %h4.modal-title File the file in CSV format
+        .modal-body
+          .field
+            = f.label :file
+            = f.file_field :file
+        .modal-footer
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+          = f.button :submit, :class => 'btn btn-primary'

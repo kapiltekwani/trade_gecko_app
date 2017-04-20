@@ -1,0 +1,9 @@
+%tr
+  %td= object_state.object_id
+  %td= object_state.object_type
+  %td= object_state.timestamp.strftime("%d/%m/%Y %T %p")
+  %td= object_state.object_changes
+  %td
+    = link_to "Edit", "#", :class => 'btn btn-primary'
+    = link_to "Delete", "#", :class => 'btn btn-danger'
+
